@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ElateService.Models.IndentViewModel>
+
+@if (Model.Count() > 0)
+{
+    foreach (var indent in Model)
+    {
+        <div class="item">
+            @if (indent.ImgSrc != null)
+            {
+                <a href="@Url.Action("ShowIndent", "Indent", new { id = indent.IndentId })">
+                    <img src="@Url.Content("~/Content/Indent/" + Path.GetFileName(indent.ImgSrc))" class = "main-item-photo">
+                </a>
+            }
+            else
+            {
+                <a href="@Url.Action("ShowIndent", "Indent", new { id = indent.IndentId })">
+                    <img src="@Url.Content("~/Content/Images/order.jpeg")" class = "main-item-photo">
+                </a>
+            }
+            <div class="item-info">
+                @if (indent.Price != null && indent.Price != 0)
+                {
+                    <p class="price"> @indent.Price </p>
+                }
+                else
+                {
+                    <p class="price"> @Resources.Resource.ContractPrice </p>
+                }
+                <a href="@Url.Action("ShowIndent", "Indent", new { id = indent.IndentId })">
+                    <p class="item-title">
+                        @indent.Title
+                        @if (indent.Executor != null)
+                        {
+                            <i class="fa fa-check-square" style="color:green;"></i>
+                        }
+                    </p>
+                </a>
+                <p class="item-description">
+                    @indent.IndentDescription
+                </p>
+                <p class="icon-info"><i class="fa fa-map-marker"></i> @indent.City </p>
+                <p class="icon-info">
+                    <i class="fa fa-suitcase"></i>
+                    @switch (indent.Category)
+                    {
+                        case ElateService.Common.Category.ConstructionWorks: @Resources.Resource.ConstructionWorks break;
+
+                        case ElateService.Common.Category.TransportationServices: @Resources.Resource.TransportationServices break;
+
+                        case ElateService.Common.Category.ComputerHelp: @Resources.Resource.ComputerHelp break;
+
+                        case ElateService.Common.Category.HouseWorks: @Resources.Resource.HouseWorks break;
+
+                        case ElateService.Common.Category.Sport: @Resources.Resource.Sport break;
+
+                        case ElateService.Common.Category.Education: @Resources.Resource.Education break;
+
+                        case ElateService.Common.Category.Tourism: @Resources.Resource.Tourism break;
+                    }
+                </p>                
+                <p class="icon-info"><i class="fa fa-calendar"></i> До @indent.IndentDate.ToString("dd/MM/yyyy") </p>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <p class="negative-search-result">@Resources.Resource.NoIndentsWithSuchProperties</p>
+}

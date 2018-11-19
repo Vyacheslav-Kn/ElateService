@@ -1,0 +1,12 @@
+D:\ElateService\ElateService.Common\bin\Release\ElateService.Common.dll
+D:\ElateService\ElateService.Common\bin\Release\ElateService.Common.pdb
+D:\ElateService\ElateService.Common\obj\Release\ElateService.Common.dll
+D:\ElateService\ElateService.Common\obj\Release\ElateService.Common.pdb
+D:\BadService\ElateService\ElateService.Common\bin\Release\ElateService.Common.dll
+D:\BadService\ElateService\ElateService.Common\bin\Release\ElateService.Common.pdb
+D:\BadService\ElateService\ElateService.Common\obj\Release\ElateService.Common.dll
+D:\BadService\ElateService\ElateService.Common\obj\Release\ElateService.Common.pdb
+C:\Users\NotePad.by\Desktop\ElateService\ElateService.Common\bin\Release\ElateService.Common.dll
+C:\Users\NotePad.by\Desktop\ElateService\ElateService.Common\bin\Release\ElateService.Common.pdb
+C:\Users\NotePad.by\Desktop\ElateService\ElateService.Common\obj\Release\ElateService.Common.dll
+C:\Users\NotePad.by\Desktop\ElateService\ElateService.Common\obj\Release\ElateService.Common.pdb

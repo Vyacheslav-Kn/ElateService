@@ -1,0 +1,65 @@
+﻿@model ElateService.Models.LoginViewModel
+
+<div id="validation-error-login" class="validation-error">
+
+    <span id="jsValidationLogin" style="display:none">@Resources.Resource.StandardErrorMessage</span>
+
+    @if (ViewBag.ValidationErrorMessageLogin != null)
+    {
+        string errorMessage = ViewBag.ValidationErrorMessageLogin;
+
+        switch (errorMessage)
+        {
+            case "Были введены  некорректные данные, попробуйте снова!": @Resources.Resource.StandardErrorMessage break;
+
+            case "Категории должны различаться!": @Resources.Resource.CategoriesErrorMessage break;
+
+            case "Загружать фотографии разрешается только в jpeg формате!": @Resources.Resource.DownloadPhotoErrorMessage break;
+
+            case "Заказ не найден!": @Resources.Resource.NoIndentErrorMessage break;
+
+            case "Вы не оценили работу исполнителя!": @Resources.Resource.DontAppreciateExecutorsWorkErrorMessage break;
+
+            case "Вы не оценили действия заказчика!": @Resources.Resource.DontAppreciateCustomersWorkErrorMessage break;
+
+            default: @Resources.Resource.StandardErrorMessage break;
+        }
+    }
+</div>
+
+@using (Html.BeginForm("Login", "Executor", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <p>
+        @Html.TextBoxFor(m => m.Email, new { placeholder = Resources.Resource.Email, @id = "loginEmail", @maxlength = "40", required = "required" })
+    </p>
+
+    <p>
+       @Html.TextBoxFor(m => m.Password, new { placeholder = Resources.Resource.Password, @id = "loginPassword", @type = "password", @maxlength = "20",
+      required = "required" })
+    </p>
+
+    <a href="@Url.Action("ForgetPassword", "Executor")">@Resources.Resource.ForgetPassword</a>
+
+    <button type="submit" id="loginSend">@Resources.Resource.Send</button>    
+}
+
+<script>
+$("#loginSend").click(function(event) {
+
+    var emailPattern = /^[a-z0-9_-]+@@[a-z0-9-]+\.([a-z]{1,6}\.)?[a-z]{2,6}/i;
+
+    var jsFieldForValidationError = document.getElementById('jsValidationLogin');
+
+    var email = document.getElementById('loginEmail');
+    var isEmailMatches = emailPattern.test(email.value);
+    if (!isEmailMatches) {
+        jsFieldForValidationError.style.display = "";
+        event.preventDefault();
+        return false;
+    }
+
+    jsFieldForValidationError.style.display = "none";
+});
+</script>

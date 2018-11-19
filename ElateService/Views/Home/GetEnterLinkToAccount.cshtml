@@ -1,0 +1,13 @@
+﻿@model ElateService.Models.HelpModelForCreatingUrl
+
+@if (Model != null)
+{
+    @Html.ActionLink(Model.ClientFirstName, "PrivateOffice", Model.ClientRole, null, new {@class = "enter-link"})
+}
+
+else
+{
+    @Html.ActionLink(Resources.Resource.Enter, "Index", "Home", protocol: null, hostName: null, fragment: "vxod", routeValues: null,
+        htmlAttributes: new {@class = "enter-link"})
+}
+

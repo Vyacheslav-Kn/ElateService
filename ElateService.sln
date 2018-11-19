@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElateService.WEB", "ElateService\ElateService.WEB.csproj", "{91DDB298-782C-45B0-AFA8-FBA1FA3F3A54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElateService.DAL", "ElateService.DAL\ElateService.DAL.csproj", "{6EB4D4E5-2E00-4FE3-85F1-49A92FA5DD8F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EA41DFBC-FB04-4177-AE54-C33E82FEC2FF} = {EA41DFBC-FB04-4177-AE54-C33E82FEC2FF}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElateService.Common", "ElateService.Common\ElateService.Common.csproj", "{EA41DFBC-FB04-4177-AE54-C33E82FEC2FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElateService.BLL", "ElateService.BLL\ElateService.BLL.csproj", "{1855086A-A18F-4019-8D1A-CC4931E8A47D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElateService.WEBTests", "ElateService.WEBTests\ElateService.WEBTests.csproj", "{B5E5F210-6A9F-4145-A5F8-1C0D9E2DBFC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElateService.API", "ElateService.API\ElateService.API\ElateService.API.csproj", "{7263C1E1-4B15-4036-86EF-5ED5A894B0A4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{91DDB298-782C-45B0-AFA8-FBA1FA3F3A54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91DDB298-782C-45B0-AFA8-FBA1FA3F3A54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91DDB298-782C-45B0-AFA8-FBA1FA3F3A54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91DDB298-782C-45B0-AFA8-FBA1FA3F3A54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EB4D4E5-2E00-4FE3-85F1-49A92FA5DD8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EB4D4E5-2E00-4FE3-85F1-49A92FA5DD8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EB4D4E5-2E00-4FE3-85F1-49A92FA5DD8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EB4D4E5-2E00-4FE3-85F1-49A92FA5DD8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA41DFBC-FB04-4177-AE54-C33E82FEC2FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA41DFBC-FB04-4177-AE54-C33E82FEC2FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA41DFBC-FB04-4177-AE54-C33E82FEC2FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA41DFBC-FB04-4177-AE54-C33E82FEC2FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1855086A-A18F-4019-8D1A-CC4931E8A47D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1855086A-A18F-4019-8D1A-CC4931E8A47D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1855086A-A18F-4019-8D1A-CC4931E8A47D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1855086A-A18F-4019-8D1A-CC4931E8A47D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5E5F210-6A9F-4145-A5F8-1C0D9E2DBFC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5E5F210-6A9F-4145-A5F8-1C0D9E2DBFC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5E5F210-6A9F-4145-A5F8-1C0D9E2DBFC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5E5F210-6A9F-4145-A5F8-1C0D9E2DBFC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7263C1E1-4B15-4036-86EF-5ED5A894B0A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7263C1E1-4B15-4036-86EF-5ED5A894B0A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7263C1E1-4B15-4036-86EF-5ED5A894B0A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7263C1E1-4B15-4036-86EF-5ED5A894B0A4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

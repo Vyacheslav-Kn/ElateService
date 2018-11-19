@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width">
+    <title>@Resources.Resource.PrivateOffice</title>
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/PrivateOffice.css")">
+    <!-- Иконка -->
+    <link rel="shortcut icon" type="image/x-icon" href="@Url.Content("~/Content/Images/favicon.ico")">
+    <!-- Шрифты -->
+    <link href="https://fonts.googleapis.com/css?family=Marvel|Open+Sans:300,700&amp;subset=cyrillic" rel="stylesheet">
+    <!-- Шрифт FontAwesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    @Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
+</head>
+
+<body>
+    <header>
+        <div class="header-preview">
+            <img src="@Url.Content("~/Content/Images/ElateServiceIcon.jpeg")" alt="logo" class="image-logo">
+            <p>ElateService</p>
+            <a href="@Url.Action("ChangeCulture","Home", new { lang = Resources.Resource.Lang.ToLower()})"
+               class="header-preview-menu-lang">@Resources.Resource.Lang</a>
+            @{Html.RenderAction("GetEnterLinkToAccount", "Home");}
+            <a href="@Url.Action("ShowExecutorsPerPage","Executor")" class="header-preview-menu">@Resources.Resource.Executors</a>
+            <a href="@Url.Action("ShowIndentsPerPage","Indent")" class="header-preview-menu">@Resources.Resource.Orders</a>
+            <a href="@Url.Action("Index", "Home")" class="header-preview-menu">@Resources.Resource.HomePage</a>
+        </div>
+    </header>
+    <div class="menu">
+        <ul class="menu-items">
+            <li><a href="@Url.Action("PrivateOffice", "Executor")">@Resources.Resource.Profile</a></li>
+            <li>
+                @{Html.RenderAction("CheckForNotifications", "Executor");}
+                <a href="@Url.Action("GetNotifications", "Executor")">@Resources.Resource.Notifications</a>
+            </li>
+            <li><a href="@Url.Action("GetIndentsWithResponce", "Executor")">@Resources.Resource.MyResponces</a></li>
+            <li><a href="@Url.Action("ModificateProfile", "Executor")">@Resources.Resource.EditProfile</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="container">
+            <div class="enter-area">
+
+                @RenderBody()
+
+            </div>
+        </div>
+    </div>
+
+    <footer id="vxod">
+        <div class="container">
+            <p>@Resources.Resource.Contacts</p>
+            <a href="#" class=""><i class="fa fa-facebook"></i></a>
+            <a href="#" class=""><i class="fa fa-linkedin"></i></a>
+            <a href="#" class=""><i class="fa fa-skype"></i></a>
+        </div>
+    </footer>
+</body>
+</html>

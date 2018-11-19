@@ -1,0 +1,130 @@
+﻿@model ElateService.Models.ExecutorPropertiesForEditionViewModel
+    
+@{
+    Layout = "~/Views/Shared/_PrivateOfficeExecutorLayout.cshtml";
+}
+
+
+<p class="menu-section-title">@Resources.Resource.EditProfile</p>
+
+@if (ViewBag.ErrorMessage != null)
+{
+    string errorMessage = ViewBag.ErrorMessage;
+
+    <p class="error">
+        @switch (errorMessage)
+        {
+        case "Были введены  некорректные данные, попробуйте снова!": @Resources.Resource.StandardErrorMessage break;
+
+        case "Категории должны различаться!": @Resources.Resource.CategoriesErrorMessage break;
+
+        case "Загружать фотографии разрешается только в jpeg формате!": @Resources.Resource.DownloadPhotoErrorMessage break;
+
+        case "Заказ не найден!": @Resources.Resource.NoIndentErrorMessage break;
+
+        case "Вы не оценили работу исполнителя!": @Resources.Resource.DontAppreciateExecutorsWorkErrorMessage break;
+
+        case "Вы не оценили действия заказчика!": @Resources.Resource.DontAppreciateCustomersWorkErrorMessage break;
+
+        default: @Resources.Resource.StandardErrorMessage break;
+        }
+    </p>
+}
+
+<div class="redact-fields">
+    @using (Html.BeginForm("ModificateProfile", "Executor", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="redact-fields-single-field">
+            <span>@Resources.Resource.AdditionalInformation</span>
+            @if (Model.Information == null)
+            {
+                <textarea maxlength="1000" name="information"></textarea>
+            }
+            else
+            {
+                <textarea maxlength="1000" name="information">@Model.Information</textarea>
+            }
+        </div>
+
+        if (Model.Categories != null)
+        {
+            <p class="category-hint">
+                <i class="fa fa-suitcase"></i>
+                @foreach (ElateService.Common.Category category in Model.Categories)
+                {
+                    switch (category)
+                    {
+                        case ElateService.Common.Category.ConstructionWorks: @Resources.Resource.ConstructionWorks break;
+
+                        case ElateService.Common.Category.TransportationServices: @Resources.Resource.TransportationServices break;
+
+                        case ElateService.Common.Category.ComputerHelp: @Resources.Resource.ComputerHelp break;
+
+                        case ElateService.Common.Category.HouseWorks: @Resources.Resource.HouseWorks break;
+
+                        case ElateService.Common.Category.Sport: @Resources.Resource.Sport break;
+
+                        case ElateService.Common.Category.Education: @Resources.Resource.Education break;
+
+                        case ElateService.Common.Category.Tourism: @Resources.Resource.Tourism break;
+                    }
+                    if (category.Equals(Model.Categories.First()))
+                    {
+                        <text>,</text> 
+                    }
+                }
+            </p>
+        }
+        else
+        {
+            <p class="category-hint">@Resources.Resource.YouDontHaveCategories</p>
+            <div class="redact-fields-single-field">
+                <span>@Resources.Resource.FirstExecutorCategory</span>
+                @Html.DropDownList("categoryFirst", new SelectList(
+               new List<string>()
+               {
+               Resources.Resource.ConstructionWorks,
+               Resources.Resource.TransportationServices,
+               Resources.Resource.ComputerHelp,
+               Resources.Resource.HouseWorks,
+               Resources.Resource.Sport,
+               Resources.Resource.Education,
+               Resources.Resource.Tourism
+               }), 
+               new { @class = "redact-fields-small-input" })
+            </div>
+            <div class="redact-fields-single-field">
+                <span>@Resources.Resource.SecondExecutorCategory</span>
+                @Html.DropDownList("categorySecond", new SelectList(
+               new List<string>()
+               {
+               Resources.Resource.ConstructionWorks,
+               Resources.Resource.TransportationServices,
+               Resources.Resource.ComputerHelp,
+               Resources.Resource.HouseWorks,
+               Resources.Resource.Sport,
+               Resources.Resource.Education,
+               Resources.Resource.Tourism
+               }), 
+               new { @class = "redact-fields-small-input" })
+            </div>
+        }
+
+        <div class="redact-fields-single-field">
+            <span>@Resources.Resource.Photo</span>
+            <div class="redact-fields-files">
+
+                <label for="file-upload" class="custom-file-upload">
+                    <i class="fa fa-cloud-upload"></i> @Resources.Resource.ChooseFile
+                </label>
+                <input id="file-upload" name="fileup" type="file" accept=".jpeg" />
+
+            </div>
+        </div>
+
+                <button type="submit">@Resources.Resource.Save</button>
+    }
+</div>
+
+
+

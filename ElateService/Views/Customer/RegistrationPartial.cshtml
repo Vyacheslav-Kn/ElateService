@@ -1,0 +1,119 @@
+﻿@model ElateService.Models.RegistrationViewModel
+
+<div id="validation-error" class="validation-error">
+
+    <span id="jsValidationRegister" style="display:none">@Resources.Resource.StandardErrorMessage</span>
+
+    @if (ViewBag.ValidationErrorMessage != null)
+    {
+        string errorMessage = ViewBag.ValidationErrorMessage;
+
+        switch (errorMessage)
+        {
+            case "Были введены  некорректные данные, попробуйте снова!": @Resources.Resource.StandardErrorMessage break;
+
+            case "Категории должны различаться!": @Resources.Resource.CategoriesErrorMessage break;
+
+            case "Загружать фотографии разрешается только в jpeg формате!": @Resources.Resource.DownloadPhotoErrorMessage break;
+
+            case "Заказ не найден!": @Resources.Resource.NoIndentErrorMessage break;
+
+            case "Вы не оценили работу исполнителя!": @Resources.Resource.DontAppreciateExecutorsWorkErrorMessage break;
+
+            case "Вы не оценили действия заказчика!": @Resources.Resource.DontAppreciateCustomersWorkErrorMessage break;
+
+            default: @Resources.Resource.StandardErrorMessage break;
+        }
+    }
+</div>
+
+<!-- ANIMATION -->
+<div id="fountainG-obertka-enter" style="display:none">
+    <div id="fountainG">
+        <div id="fountainG_1" class="fountainG"></div>
+        <div id="fountainG_2" class="fountainG"></div>
+        <div id="fountainG_3" class="fountainG"></div>
+        <div id="fountainG_4" class="fountainG"></div>
+        <div id="fountainG_5" class="fountainG"></div>
+        <div id="fountainG_6" class="fountainG"></div>
+        <div id="fountainG_7" class="fountainG"></div>
+        <div id="fountainG_8" class="fountainG"></div>
+    </div>
+</div>
+<!---->
+
+@using (Ajax.BeginForm("Registration", "Customer", new AjaxOptions {
+    UpdateTargetId = "Register",
+    OnBegin = "OnBegin",
+    LoadingElementId = "fountainG-obertka-enter"
+},
+new { id = "clearForAnimation" }))
+{
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true)
+
+            <p>
+    @Html.TextBoxFor(m => m.FirstName, new { placeholder = Resources.Resource.Name, @class = "search", @maxlength = "20", required = "required" })
+            </p>
+
+            <p>
+    @Html.TextBoxFor(m => m.Surname, new { placeholder = Resources.Resource.Surname, @class = "search", @maxlength = "20", required = "required" })
+            </p>
+
+            <p>
+    @Html.TextBoxFor(m => m.Patronymic, new { placeholder = Resources.Resource.Patronymic, @class = "search", @maxlength = "20", required = "required" })
+            </p>
+
+            <p>
+    @Html.TextBoxFor(m => m.MobilePhone, new { placeholder = Resources.Resource .MobilePhone})
+            </p>
+
+            <p>
+    @Html.TextBoxFor(m => m.Email, new { placeholder = Resources.Resource.Email, @maxlength = "40", required = "required" })
+            </p>
+
+            <p>
+    @Html.TextBoxFor(m => m.Password, new { placeholder = Resources.Resource.Password, @type = "password", @maxlength = "20", required = "required" })
+            </p>
+
+            <button type="submit" id="registrationSend">@Resources.Resource.Send</button>
+            }
+<script>
+function OnBegin() {
+     var indentArea = document.getElementById('clearForAnimation');
+     indentArea.style.display = "none";
+}
+
+$(function(){
+    $("#MobilePhone").mask("+375(99) 999-99-99");
+});
+
+$("#registrationSend").click(function(event) {
+
+    var nameSurnamePatronymicPattern = /^[a-zа-я]{2,20}$/i;
+    var emailPattern = /^[a-z0-9_-]+@@[a-z0-9-]+\.([a-z]{1,6}\.)?[a-z]{2,6}/i;
+
+    var jsFieldForValidationError = document.getElementById('jsValidationRegister');
+
+    var names = document.getElementsByClassName("search");
+    for (var i = 0; i < names.length; i++) {
+        if (!nameSurnamePatronymicPattern.test(names[i].value)) {
+            jsFieldForValidationError.style.display="";
+            event.preventDefault();
+            return false;
+        }
+    }
+
+    var email = document.getElementById('Email');
+    var isEmailMatches = emailPattern.test(email.value);
+    if (!isEmailMatches) {
+        jsFieldForValidationError.style.display="";
+        event.preventDefault();
+        return false;
+    }
+
+    jsFieldForValidationError.style.display = "none";
+});
+
+</script>

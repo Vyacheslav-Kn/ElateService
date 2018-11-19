@@ -1,0 +1,41 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model ElateService.Models.ComplexRegistrationLoginViewModel
+
+<head>
+    <script>
+        function OpenAction(evt, actionName) {
+            var i, tabContent, tabLinks;
+            tabContent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].style.display = "none";
+            }
+            tabLinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tabLinks.length; i++) {
+                tabLinks[i].className = tabLinks[i].className.replace(" active", "");
+            }
+            document.getElementById(actionName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+</head>
+
+<div class="container">
+    <div class="enter-area">
+        <div class="tab">
+            <button class="tablinks active" onclick="OpenAction(event, 'Login')">@Resources.Resource.Enter</button>
+            <button class="tablinks" onclick="OpenAction(event, 'Register')">@Resources.Resource.Registration</button>
+        </div>
+
+        <div id="Login" class="tabcontent" style="display:block">
+            @Html.Partial("LoginPartial", Model.loginViewModel)
+        </div>
+
+        <div id="Register" class="tabcontent">
+            @Html.Partial("RegistrationPartial", Model.registrationViewModel)
+        </div>
+
+    </div>
+</div>

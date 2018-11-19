@@ -1,0 +1,70 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+<!-- Animate css -->
+<link rel="stylesheet" href="@Url.Content("~/Content/Css/animate.min.css")">
+<script src="@Url.Content("~/Scripts/wow.min.js")"></script>
+<script>
+    new WOW().init();
+</script>
+</head>
+
+        <div class="bg-height-helper">
+    <div class="header-after-preview">
+        <div class="container">
+            <p class="bg-title wow slideInDown" data-wow-duration="1s" data-wow-delay="0.5s">@Resources.Resource.MainTitle</p>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        <div class="work">
+            <p class="work-title">@Resources.Resource.HowItWorks</p>
+            <p class="work-title-description"> @Resources.Resource.TitleDescriptionPart1<br> @Resources.Resource.TitleDescriptionPart2</p>
+            <div class="work-point wow bounceInLeft" data-wow-duration="2s" data-wow-offset="100" data-wow-delay="0.05s">
+                <img src="@Url.Content("~/Content/Images/Order.jpeg")" alt="work1">
+                <div class="work-point-description">
+                    <p class="work-point-title">@Resources.Resource.Point1</p>
+                    <p>@Resources.Resource.Point1_1</p>
+                </div>
+            </div>
+            <div class="work-point wow bounceInLeft" data-wow-duration="2s" data-wow-offset="100" data-wow-delay="0.1s">
+                <img src="@Url.Content("~/Content/Images/executorIndex.jpeg")" alt="work3">
+                <div class="work-point-description">
+                    <p class="work-point-title">@Resources.Resource.Point2</p>
+                    <p>@Resources.Resource.Point2_2</p>
+                </div>
+            </div>
+            <div class="work-point wow bounceInLeft" data-wow-duration="2s" data-wow-offset="100" data-wow-delay="0.15s">
+                <img src="@Url.Content("~/Content/Images/selected.jpeg")" alt="work3">
+                <div class="work-point-description">
+                    <p class="work-point-title">@Resources.Resource.Point3</p>
+                    <p>@Resources.Resource.Point3_1</p>
+                </div>
+            </div>
+        </div>
+
+        <hr class="horizontal">
+
+        <div class="register">
+            <p class="register-title">@Resources.Resource.RegistrationElateService</p>
+            <div class="executor-register">
+                <p class="register-both-title">@Resources.Resource.BecomeACustomer</p>
+                <p class="register-both-small-text">
+                    In vitae varius augue, eu consectetur ligula. Etiam dui eros, laoreet sit amet est vel, commodo venenatis eros.
+                    Donec laoreet metus id laoreet malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
+                <a href="@Url.Action("Registration", "Customer")" class="register-href">@Resources.Resource.ToBecomeACustomer</a>
+            </div>
+            <div class="customer-register">
+                <p class="register-both-title">@Resources.Resource.BecomeAnExecutor</p>
+                <p class="register-both-small-text">
+                    In vitae varius augue, eu consectetur ligula. Etiam dui eros, laoreet sit amet est vel, commodo venenatis eros.
+                    Donec laoreet metus id laoreet malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
+                <a href="@Url.Action("Registration", "Executor")" class="register-href">@Resources.Resource.ToBecomeAnExecutor</a>
+            </div>
+        </div>
+    </div>

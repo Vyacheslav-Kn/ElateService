@@ -1,0 +1,237 @@
+﻿@model ElateService.Models.ExecutorPageViewModel
+
+@{
+    Layout = "~/Views/Shared/_IndentExecutorPageLayout.cshtml";
+}
+
+@using System.Linq
+@using MvcPaging
+
+
+@using (Html.BeginForm("ShowExecutorsPerPage", "Executor", FormMethod.Get))
+{
+    <div class="menu">
+        <ul class="menu-items">
+            @if (Model.AvailableCategories != null)
+            {
+                <li>
+                    <label>
+                        <input type="checkbox" name="categories" value="@Resources.Resource.ConstructionWorks"
+                               @if (Model.AvailableCategories.Any(c => c == Resources.Resource.ConstructionWorks))
+                               { <text> checked="checked" </text>  }>
+                        <span class="pseudocheckbox">@Resources.Resource.ConstructionWorks</span>
+                    </label>
+                </li>
+
+                <li>
+                    <label>
+                        <input type="checkbox" name="categories" value="@Resources.Resource.TransportationServices"
+                               @if (Model.AvailableCategories.Any(c => c == Resources.Resource.TransportationServices))
+                               { <text> checked="checked" </text> }>
+                        <span class="pseudocheckbox">@Resources.Resource.TransportationServices</span>
+                    </label>
+                </li>
+
+                <li>
+                    <label>
+                        <input type="checkbox" name="categories" value="@Resources.Resource.ComputerHelp"
+                               @if (Model.AvailableCategories.Any(c => c == Resources.Resource.ComputerHelp))
+                               { <text> checked="checked" </text>  }>
+                        <span class="pseudocheckbox">@Resources.Resource.ComputerHelp</span>
+                    </label>
+                </li>
+
+                <li>
+                    <label>
+                        <input type="checkbox" name="categories" value="@Resources.Resource.HouseWorks"
+                               @if (Model.AvailableCategories.Any(c => c == Resources.Resource.HouseWorks))
+                               { <text> checked="checked" </text>  }>
+                        <span class="pseudocheckbox">@Resources.Resource.HouseWorks</span>
+                    </label>
+                </li>
+
+                <li>
+                    <label>
+                        <input type="checkbox" name="categories" value="@Resources.Resource.Sport"
+                               @if (Model.AvailableCategories.Any(c => c == Resources.Resource.Sport))
+                               { <text> checked="checked" </text>   }>
+                        <span class="pseudocheckbox">@Resources.Resource.Sport</span>
+                    </label>
+                </li>
+
+                <li>
+                    <label>
+                        <input type="checkbox" name="categories" value="@Resources.Resource.Education"
+                               @if (Model.AvailableCategories.Any(c => c == Resources.Resource.Education))
+                               { <text> checked="checked" </text>    }>
+                        <span class="pseudocheckbox">@Resources.Resource.Education</span>
+                    </label>
+                </li>
+
+                <li>
+                    <label>
+                        <input type="checkbox" name="categories" value="@Resources.Resource.Tourism"
+                               @if (Model.AvailableCategories.Any(c => c == Resources.Resource.Tourism))
+                               { <text> checked="checked" </text>    }>
+                        <span class="pseudocheckbox">@Resources.Resource.Tourism</span>
+                    </label>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <label>
+                        <input type="checkbox" name="categories" value="@Resources.Resource.ConstructionWorks" checked="checked">
+                        <span class="pseudocheckbox">@Resources.Resource.ConstructionWorks</span>
+                    </label>
+                </li>
+
+                <li>
+                    <label>
+                        <input type="checkbox" name="categories" value="@Resources.Resource.TransportationServices" checked="checked">
+                        <span class="pseudocheckbox">@Resources.Resource.TransportationServices</span>
+                    </label>
+                </li>
+
+                <li>
+                    <label>
+                        <input type="checkbox" name="categories" value="@Resources.Resource.ComputerHelp" checked="checked">
+                        <span class="pseudocheckbox">@Resources.Resource.ComputerHelp</span>
+                    </label>
+                </li>
+
+                <li>
+                    <label>
+                        <input type="checkbox" name="categories" value="@Resources.Resource.HouseWorks" checked="checked">
+                        <span class="pseudocheckbox">@Resources.Resource.HouseWorks</span>
+                    </label>
+                </li>
+
+                <li>
+                    <label>
+                        <input type="checkbox" name="categories" value="@Resources.Resource.Sport" checked="checked">
+                        <span class="pseudocheckbox">@Resources.Resource.Sport</span>
+                    </label>
+                </li>
+
+                <li>
+                    <label>
+                        <input type="checkbox" name="categories" value="@Resources.Resource.Education" checked="checked">
+                        <span class="pseudocheckbox">@Resources.Resource.Education</span>
+                    </label>
+                </li>
+
+                <li>
+                    <label>
+                        <input type="checkbox" name="categories" value="@Resources.Resource.Tourism" checked="checked">
+                        <span class="pseudocheckbox">@Resources.Resource.Tourism</span>
+                    </label>
+                </li>
+            }
+            <li>
+                <button type="submit" class="search-link">@Resources.Resource.Sort</button>
+            </li>
+        </ul>
+    </div>
+}
+<div class="content">
+    @using (Ajax.BeginForm("Search", "Executor", new AjaxOptions {
+        OnBegin = "OnBegin",
+        OnComplete = "OnComplete",
+        UpdateTargetId = "enter-area",
+        LoadingElementId = "fountainG-obertka",
+    },
+    new { @class = "search-up" }))
+    {
+        <input type="text" name="searchString" placeholder="@Resources.Resource.SearchHere" required>
+        <button type="submit"></button>
+    }
+    <div class="container">
+
+        <!-- ANIMATION -->
+        <div id="fountainG-obertka" style="display:none">
+            <div id="fountainG">
+                <div id="fountainG_1" class="fountainG"></div>
+                <div id="fountainG_2" class="fountainG"></div>
+                <div id="fountainG_3" class="fountainG"></div>
+                <div id="fountainG_4" class="fountainG"></div>
+                <div id="fountainG_5" class="fountainG"></div>
+                <div id="fountainG_6" class="fountainG"></div>
+                <div id="fountainG_7" class="fountainG"></div>
+                <div id="fountainG_8" class="fountainG"></div>
+            </div>
+        </div>
+        <!---->
+
+        <div class="enter-area" id="enter-area">
+            @if (Model.ExecutorsOnPage.Count() > 0)
+            {
+                foreach (var executor in Model.ExecutorsOnPage)
+                {
+                    <div class="item">
+                        @if (executor.ImgSrc != null)
+                        {
+                            <a href="@Url.Action("ShowExecutor", "Executor", new { id = executor.ExecutorId })">
+                                <img src="@Url.Content("~/Content/Executor/" + Path.GetFileName(executor.ImgSrc))" class = "main-item-photo">
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("ShowExecutor", "Executor", new { id = executor.ExecutorId })">
+                                <img src="@Url.Content("~/Content/Images/executor.jpeg")" class = "main-item-photo">
+                            </a>
+                        }
+                        <div class="item-info">
+                            <a href="@Url.Action("ShowExecutor", "Executor", new { id = executor.ExecutorId })">
+                                <p class="item-title">
+                                    @executor.Surname @executor.FirstName @executor.Patronymic
+                                </p>                                
+                            </a>
+                            <div class="item-marks">
+                                @if (executor.Mark != null && executor.Mark != 0)
+                                {
+                                    for (int i = 0; i < executor.Mark; i++)
+                                    {
+                                        <img src="@Url.Content("~/Content/Images/FilledStar.jpeg")">
+                                    }
+                                }
+                                else
+                                {
+                                    for (int i = 0; i < 5; i++)
+                                    {
+                                        <img src="@Url.Content("~/Content/Images/EmptyStar.jpeg")">
+                                    }
+                                }
+                            </div>
+                            <p class="item-description">
+                                @executor.Information
+                            </p>
+                         <!--<p class="icon-info"><i class="fa fa-suitcase"></i> executor.Categories.First(), executor.Categories.Last()</p>-->
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p class="negative-search-result">@Resources.Resource.NoExecutorsWithSuchProperties</p>
+            }
+            <div class="pager">
+                @Html.Pager(Model.PageSize, Model.Page, Model.NumberOfAllExecutorsWithSomeCategory).Options(o => o
+            .AddRouteValue("categories", Model.AvailableCategories)
+            .HidePreviousAndNextPage())
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function OnBegin() {
+        var indentArea = document.getElementById('enter-area');
+        indentArea.style.display = "none";
+    }
+
+    function OnComplete() {
+        var indentArea = document.getElementById('enter-area');
+        indentArea.style.display = "";
+    }
+</script>

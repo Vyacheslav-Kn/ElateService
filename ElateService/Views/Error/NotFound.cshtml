@@ -1,0 +1,33 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width">
+    <title>404</title>
+    <!-- Иконка -->
+    <link rel="shortcut icon" type="image/x-icon" href="@Url.Content("~/Content/Images/favicon.ico")">
+    <!-- Шрифты -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+</head>
+<body>
+    <h2 style="margin-top: 40px;
+    text-align: center;
+    color: #d94d3a;
+    font-weight: bold;">
+        @Resources.Resource.HttpPageNotFound <i class="fa fa-frown"></i>
+    </h2>
+    <div style="margin-top: 40px;
+    width: 613px;
+    height: 368px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;">
+        <img src="@Url.Content("~/Content/Images/Errors/404.jpeg")" alt="not found">
+    </div>
+</body>
+
+</html>    

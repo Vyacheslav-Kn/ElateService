@@ -1,0 +1,35 @@
+﻿@model ElateService.Models.NotificationsViewModel
+
+@{
+    Layout = "~/Views/Shared/_PrivateOfficeExecutorLayout.cshtml";
+}
+
+<p class="menu-section-title">@Resources.Resource.Notifications</p>
+
+@if (Model.Notifications.Count() > 0)
+{
+    <div class="notifications">
+        @if (!Model.Notifications.First().WasRead)
+        {
+            <p class="new-notifications">@Resources.Resource.New</p>
+        }
+       
+        @foreach (var notification in Model.Notifications)
+        {
+            <p>
+                @Html.ActionLink(notification.FromName, "ShowCustomer", "Customer", new { id = notification.FromId}, null)               
+                @switch (notification.Context)
+                {
+                    case "оставил(а) вам отзыв после работы над заказом": @Resources.Resource.RecallNotification break;
+
+                    case "предлагает свою кандидатуру для выполнения заказа": @Resources.Resource.ResponceNotification break;
+
+                    case "выбрал(а) вас для выполнения заказа": @Resources.Resource.CandidatureConfirmedNotification break;
+
+                    case "предлагает вам выполнить заказ": @Resources.Resource.InviteToCompleteOrderNotification break;
+                }
+                @Html.ActionLink(notification.IndentTitle, "ShowIndent", "Indent", new { id = notification.IndentId }, null)
+            </p>
+        }
+    </div>
+}

@@ -1,0 +1,16 @@
+D:\ElateService\ElateService.Common\bin\Debug\ElateService.Common.dll
+D:\ElateService\ElateService.Common\bin\Debug\ElateService.Common.pdb
+D:\ElateService\ElateService.Common\obj\Debug\ElateService.Common.dll
+D:\ElateService\ElateService.Common\obj\Debug\ElateService.Common.pdb
+D:\ElateService\ElateService.Common\obj\Debug\ElateService.Common.csprojResolveAssemblyReference.cache
+d:\BadService\ElateService\ElateService.Common\bin\Debug\ElateService.Common.dll
+d:\BadService\ElateService\ElateService.Common\bin\Debug\ElateService.Common.pdb
+d:\BadService\ElateService\ElateService.Common\obj\Debug\ElateService.Common.dll
+d:\BadService\ElateService\ElateService.Common\obj\Debug\ElateService.Common.pdb
+D:\BadService\ElateService\ElateService.Common\obj\Debug\ElateService.Common.csprojResolveAssemblyReference.cache
+C:\Users\NotePad.by\Desktop\ElateService\ElateService.Common\bin\Debug\ElateService.Common.dll
+C:\Users\NotePad.by\Desktop\ElateService\ElateService.Common\bin\Debug\ElateService.Common.pdb
+C:\Users\NotePad.by\Desktop\ElateService\ElateService.Common\obj\Debug\ElateService.Common.dll
+C:\Users\NotePad.by\Desktop\ElateService\ElateService.Common\obj\Debug\ElateService.Common.pdb
+C:\Users\NotePad.by\Desktop\ElateService\ElateService.Common\obj\Debug\ElateService.Common.csprojAssemblyReference.cache
+C:\Users\NotePad.by\Desktop\ElateService\ElateService.Common\obj\Debug\ElateService.Common.csproj.CoreCompileInputs.cache

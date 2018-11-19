@@ -1,0 +1,9 @@
+﻿@model ElateService.Models.NotificationsViewModel
+
+@if (Model.isUserHasNewNotifications)
+{
+    <div class="notification-red-circle" id="notification-red-circle"></div>
+}
+else{
+    <span></span>
+}

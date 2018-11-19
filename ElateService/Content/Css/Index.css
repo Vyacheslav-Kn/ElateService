@@ -1,0 +1,253 @@
+* {
+    box-sizing: border-box;
+}
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, ul, li{
+                 
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+header{	
+	height: 20vh;
+	position: relative;
+}
+
+.bg-height-helper{
+    height:80vh;
+}
+
+.container{
+	width:1000px;
+	margin: 0 auto;
+}
+
+.indent-container{    
+	width:60%;
+	margin: 0 auto;
+}
+
+.header-preview{
+    font-family: 'Open Sans', sans-serif; 
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: #d94d3a;	
+	height: 75px;
+}
+
+.header-preview p{
+	font-weight: bold;
+	font-size: 30px;
+    color: #ffffff;
+    float: left;
+}
+
+.header-preview a{
+	font-size: 24px;
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+    float: right;
+    margin-right: 20px;
+}
+
+.header-preview-menu-lang:hover{
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+    border-width: 1px;
+}
+
+.header-preview-menu:hover{
+    border-style: solid;
+    border-color: #fff transparent;
+    border-width: 1px;
+}
+
+.enter-link{
+    margin-right: 30px;
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 1px;
+    border-radius: 5px;
+    padding: 3px 10px;
+    margin-top: -4px;
+}
+
+.enter-link:hover{
+    background-color: #fff;
+    color: #d94d3a;	
+    border-color: #d94d3a;
+}
+
+.image-logo{
+	float:left;
+	margin-right: 10px;
+    margin-left: 30px;
+}
+
+.header-after-preview{
+	background: url(../Images/bg.jpg) no-repeat;
+	position: absolute; 
+	top: 75px; 
+	bottom: 0;
+	width: 100%;
+	background-size: cover; /* 100% 100% */
+	background-position: bottom;
+}
+
+.bg-title{
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    right: 5%;
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    
+    padding-bottom: 5px;
+    border-color: transparent transparent #d94d3a transparent; /* Цвет границы */
+    border-style: solid;
+    border-width: 0.5px;
+}
+
+.work{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.work-title{
+    font-size: 30px;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.work-title-description{
+    font-size: 23px;
+    color: #878e92;
+    text-align: center;
+    margin-top: 10px;
+} 
+
+.work-point{
+    margin-top: 30px;
+    overflow: hidden;
+    text-align: left;
+}
+
+.work-point-title{    
+    font-size: 25px;
+    color: black;
+    font-weight: bold;
+}
+
+.work-point-description{        
+    font-size: 18px;
+    margin-top:5%;
+    margin-bottom:5%;
+    width: 70%;
+    color: #878e92;
+}
+
+.work-point img{
+    width: 300px;
+    height: 200px;
+    float: right;
+    margin-left: 15px;
+}
+
+.horizontal{
+    margin-top: 30px;
+    border-color: #d94d3a;
+}
+
+.register{
+    margin-top: 20px;
+    font-family: 'Open Sans', sans-serif;    
+    color: #878e92;
+}
+
+.register-title{    
+    color: black;
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.register-both-title{    
+    color: black;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.executor-register{
+    float: left;
+    width: 50%;
+    border-color: transparent  #d94d3a transparent transparent; /* Цвет границы */
+    border-style: solid;
+    border-width: 2px;
+    margin-right: 15px;
+    text-align: center;
+}
+
+.register-both-small-text{
+    font-size: 12px;
+    text-align: left;
+    padding-right: 5px;
+    margin-bottom: 15px;
+}
+
+.register-href{
+    border-style: solid;
+    border-color:  #d94d3a;    
+    background-color:  #d94d3a;
+    border-width: 1px;
+    border-radius: 3px;
+    text-align: center;
+    color: white;
+    padding: 12px 12px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.register-href:hover{
+    background-color: #fff;
+    color: #d94d3a;		
+}
+
+.customer-register{
+    text-align: center;
+}
+
+footer{
+    margin-top: 20px;
+    padding-bottom: 20px;
+    background-color: #d94d3a;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 40px;
+    text-align: center;
+    color: white;
+}
+
+footer p{
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+footer a{
+    display: inline-block;
+    text-decoration: none;
+    color: #7d868a;
+    margin-right: 10px;
+    background-color: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+}

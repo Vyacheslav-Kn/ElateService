@@ -1,0 +1,450 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AdditionalInformation" xml:space="preserve">
+    <value>Additional information</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="BecomeACustomer" xml:space="preserve">
+    <value>Become a customer</value>
+  </data>
+  <data name="BecomeAnExecutor" xml:space="preserve">
+    <value>Become an executor</value>
+  </data>
+  <data name="CheckInputData" xml:space="preserve">
+    <value>Check input data!</value>
+  </data>
+  <data name="ChooseAsExecutor" xml:space="preserve">
+    <value>Choose as executor</value>
+  </data>
+  <data name="ChooseFile" xml:space="preserve">
+    <value>Choose file</value>
+  </data>
+  <data name="ConfirmationCodeToEmail" xml:space="preserve">
+    <value>The account activation code has been sent to your e-mail ...</value>
+  </data>
+  <data name="ConfirmNewPassword" xml:space="preserve">
+    <value>Confirm password</value>
+  </data>
+  <data name="Contacts" xml:space="preserve">
+    <value>Contacts</value>
+  </data>
+  <data name="ContractPrice" xml:space="preserve">
+    <value>Contract price</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="EditProfile" xml:space="preserve">
+    <value>Edit profile</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Enter" xml:space="preserve">
+    <value>Enter</value>
+  </data>
+  <data name="EnterNewPassword" xml:space="preserve">
+    <value>Enter new password</value>
+  </data>
+  <data name="EnterYourEmailAddress" xml:space="preserve">
+    <value>Enter your email address</value>
+  </data>
+  <data name="Executors" xml:space="preserve">
+    <value>Executors</value>
+  </data>
+  <data name="FilesToOrder" xml:space="preserve">
+    <value>Files to order</value>
+  </data>
+  <data name="FirstExecutorCategory" xml:space="preserve">
+    <value>Executor's category - 1</value>
+  </data>
+  <data name="ForgetPassword" xml:space="preserve">
+    <value>Forget password ?</value>
+  </data>
+  <data name="HomePage" xml:space="preserve">
+    <value>Home page</value>
+  </data>
+  <data name="HowItWorks" xml:space="preserve">
+    <value>How it works?</value>
+  </data>
+  <data name="Lang" xml:space="preserve">
+    <value>Ru</value>
+  </data>
+  <data name="LeaveAResponceToThisOrder" xml:space="preserve">
+    <value>Leave a responce to this order ...</value>
+  </data>
+  <data name="LeaveFeedbackOnTheCustomersWork" xml:space="preserve">
+    <value>Leave feedback on the customer's work ... </value>
+  </data>
+  <data name="LeaveFeedbackOnTheExecutorsWork" xml:space="preserve">
+    <value>Leave feedback on the executor's work ...</value>
+  </data>
+  <data name="MainTitle" xml:space="preserve">
+    <value>ElateService - is the best way to find executor for your order</value>
+  </data>
+  <data name="Mark" xml:space="preserve">
+    <value>Mark: </value>
+  </data>
+  <data name="MobilePhone" xml:space="preserve">
+    <value>Mobile phone</value>
+  </data>
+  <data name="MyOrders" xml:space="preserve">
+    <value>My orders</value>
+  </data>
+  <data name="MyRecalls" xml:space="preserve">
+    <value>My recalls</value>
+  </data>
+  <data name="MyResponces" xml:space="preserve">
+    <value>My responces</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="NoExecutorsWithSuchProperties" xml:space="preserve">
+    <value>No executors with such categories!</value>
+  </data>
+  <data name="NoIndentsWithSuchProperties" xml:space="preserve">
+    <value>No indents with such properties!</value>
+  </data>
+  <data name="Notifications" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="OfferOrder" xml:space="preserve">
+    <value>Offer an order</value>
+  </data>
+  <data name="OnOrder" xml:space="preserve">
+    <value>on order</value>
+  </data>
+  <data name="Or" xml:space="preserve">
+    <value>Or</value>
+  </data>
+  <data name="OrderCategory" xml:space="preserve">
+    <value>Order's category</value>
+  </data>
+  <data name="Orders" xml:space="preserve">
+    <value>Orders</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Patronymic" xml:space="preserve">
+    <value>Patronymic</value>
+  </data>
+  <data name="Photo" xml:space="preserve">
+    <value>Photo</value>
+  </data>
+  <data name="Point1" xml:space="preserve">
+    <value>1. Place your order</value>
+  </data>
+  <data name="Point1.1" xml:space="preserve">
+    <value>Describe in detail your order. Attach documents, photos and specify conditions - cost and terms.</value>
+  </data>
+  <data name="Point2" xml:space="preserve">
+    <value>2. Study the feedback</value>
+  </data>
+  <data name="Point2.2" xml:space="preserve">
+    <value>Wait for responses from the performers and compare them. All information is at hand: price, commentary and rating of the executor.</value>
+  </data>
+  <data name="Point3" xml:space="preserve">
+    <value>3. Select executor</value>
+  </data>
+  <data name="Point3.1" xml:space="preserve">
+    <value>Choose executor that suits you and contact him to coordinate the order. After completing the order - leave feedback.</value>
+  </data>
+  <data name="PostARecall" xml:space="preserve">
+    <value>Post a recall</value>
+  </data>
+  <data name="PostAResponce" xml:space="preserve">
+    <value>Post a responce</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="PriceForWork" xml:space="preserve">
+    <value>Price for work</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="Recalls" xml:space="preserve">
+    <value>Recalls</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Registration</value>
+  </data>
+  <data name="RegistrationElateService" xml:space="preserve">
+    <value>ElateService registration</value>
+  </data>
+  <data name="ResetLinkToEmail" xml:space="preserve">
+    <value>Password recovery link sent to your e-mail ...</value>
+  </data>
+  <data name="Responces" xml:space="preserve">
+    <value>Responces</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SearchHere" xml:space="preserve">
+    <value>Search here ...</value>
+  </data>
+  <data name="SecondExecutorCategory" xml:space="preserve">
+    <value>Executor's category - 2</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="SendOrder" xml:space="preserve">
+    <value>Send an order</value>
+  </data>
+  <data name="SendResponce" xml:space="preserve">
+    <value>Send a responce</value>
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value>Sort</value>
+  </data>
+  <data name="Surname" xml:space="preserve">
+    <value>Surname</value>
+  </data>
+  <data name="ThankyouForRegistration" xml:space="preserve">
+    <value>Thank you for registration!</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="TitleDescriptionPart1" xml:space="preserve">
+    <value>Simple, profitable, reliable. Just 3 steps - and you will find</value>
+  </data>
+  <data name="TitleDescriptionPart2" xml:space="preserve">
+    <value> the ideal performer for your order.</value>
+  </data>
+  <data name="ToBecomeACustomer" xml:space="preserve">
+    <value>Become customer</value>
+  </data>
+  <data name="ToBecomeAnExecutor" xml:space="preserve">
+    <value>Become executor</value>
+  </data>
+  <data name="YouDontHaveCategories" xml:space="preserve">
+    <value>You don't have current categories</value>
+  </data>
+  <data name="YourEvaluationToTheCustomer" xml:space="preserve">
+    <value>Your evaluation to the customer: </value>
+  </data>
+  <data name="YourEvaluationToThePerformer" xml:space="preserve">
+    <value>Your evaluation to the performer:</value>
+  </data>
+  <data name="ComputerHelp" xml:space="preserve">
+    <value>Computer help</value>
+  </data>
+  <data name="ConstructionWorks" xml:space="preserve">
+    <value>Construction works</value>
+  </data>
+  <data name="Education" xml:space="preserve">
+    <value>Education</value>
+  </data>
+  <data name="HouseWorks" xml:space="preserve">
+    <value>House works</value>
+  </data>
+  <data name="Sport" xml:space="preserve">
+    <value>Sport</value>
+  </data>
+  <data name="Tourism" xml:space="preserve">
+    <value>Tourism</value>
+  </data>
+  <data name="TransportationServices" xml:space="preserve">
+    <value>Transportation services</value>
+  </data>
+  <data name="CandidatureConfirmedNotification" xml:space="preserve">
+    <value>has selected you to complete order</value>
+  </data>
+  <data name="CategoriesErrorMessage" xml:space="preserve">
+    <value>Categories should be different!</value>
+  </data>
+  <data name="DontAppreciateCustomersWorkErrorMessage" xml:space="preserve">
+    <value>You didn't appreciate the customer's actions!</value>
+  </data>
+  <data name="DontAppreciateExecutorsWorkErrorMesage" xml:space="preserve">
+    <value>You didn't appreciate executor's work!</value>
+  </data>
+  <data name="DownloadPhotoErrorMessage" xml:space="preserve">
+    <value>You can upload photoes only in jpeg format!</value>
+  </data>
+  <data name="InviteToCompleteOrderNotification" xml:space="preserve">
+    <value>invites you to complete order</value>
+  </data>
+  <data name="NoIndentErrorMessage" xml:space="preserve">
+    <value>No indent was found!</value>
+  </data>
+  <data name="OfferIndentToExecutorErrorMessage" xml:space="preserve">
+    <value>You must log in to your customer account to offer an order!</value>
+  </data>
+  <data name="OrdersWhichICanOffer" xml:space="preserve">
+    <value>Orders that you can offer</value>
+  </data>
+  <data name="RecallNotification" xml:space="preserve">
+    <value>left you feedback after working on order</value>
+  </data>
+  <data name="ResponceNotification" xml:space="preserve">
+    <value>wants to be a candidate for the execution of order</value>
+  </data>
+  <data name="ShowPersonalCustomerDataMessage" xml:space="preserve">
+    <value>The customer's contacts are visible only to the executors of his orders.</value>
+  </data>
+  <data name="ShowPersonalExecutorDataMessage" xml:space="preserve">
+    <value>Contacts of the executor are visible only to its customers. If you are interested in the services of this executor - offer him an order.</value>
+  </data>
+  <data name="StandardErrorMessage" xml:space="preserve">
+    <value>Incorrect data was entered, please try again!</value>
+  </data>
+  <data name="OopsWarningMessage1" xml:space="preserve">
+    <value>Oops, something went wrong...</value>
+  </data>
+  <data name="OopsWarningMessage2" xml:space="preserve">
+    <value>Try to repeat your action again.</value>
+  </data>
+  <data name="HttpInternalServerError" xml:space="preserve">
+    <value>Internal server error</value>
+  </data>
+  <data name="HttpPageNotFound" xml:space="preserve">
+    <value>The search page was not found</value>
+  </data>
+  <data name="HttpUnprocessableEntity" xml:space="preserve">
+    <value>There is no page that satisfies the conditions</value>
+  </data>
+  <data name="PrivateOffice" xml:space="preserve">
+    <value>Private office</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="Until" xml:space="preserve">
+    <value>Until</value>
+  </data>
+</root>

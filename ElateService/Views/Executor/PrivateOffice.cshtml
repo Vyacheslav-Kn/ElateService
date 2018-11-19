@@ -1,0 +1,140 @@
+﻿@model ElateService.Models.UserProfileViewModel
+
+@{
+    Layout = "~/Views/Shared/_PrivateOfficeExecutorLayout.cshtml";
+}
+
+
+<p class="menu-section-title">@Resources.Resource.Profile</p>
+<div class="item">
+    @if (Model.ImgSrc != null)
+    {
+        <img src="@Url.Content("~/Content/Executor/" + Path.GetFileName(Model.ImgSrc))">
+    }
+    else
+    {
+        <img src="@Url.Content("~/Content/Images/executor.jpeg")">
+    }
+
+    <div class="item-info">
+        <p class="item-title">@Model.Surname @Model.FirstName @Model.Patronymic</p>
+        <div class="item-marks">
+            @if (Model.Mark != null && Model.Mark != 0)
+            {
+                for (int i = 0; i < Model.Mark; i++)
+                {
+                    <img src="@Url.Content("~/Content/Images/FilledStar.jpeg")">
+                }
+            }
+            else
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    <img src="@Url.Content("~/Content/Images/EmptyStar.jpeg")">
+                }
+            }
+        </div>
+        @if (Model.Categories != null)
+        {
+            <p class="icon-info">
+                <i class="fa fa-suitcase"></i>
+                @foreach (ElateService.Common.Category category in Model.Categories)
+                {
+                    switch (category)
+                    {
+                        case ElateService.Common.Category.ConstructionWorks: @Resources.Resource.ConstructionWorks break;
+
+                        case ElateService.Common.Category.TransportationServices: @Resources.Resource.TransportationServices break;
+
+                        case ElateService.Common.Category.ComputerHelp: @Resources.Resource.ComputerHelp break;
+
+                        case ElateService.Common.Category.HouseWorks: @Resources.Resource.HouseWorks break;
+
+                        case ElateService.Common.Category.Sport: @Resources.Resource.Sport break;
+
+                        case ElateService.Common.Category.Education: @Resources.Resource.Education break;
+
+                        case ElateService.Common.Category.Tourism: @Resources.Resource.Tourism break;
+                    }
+                    if (category.Equals(Model.Categories.First()))
+                    {
+                        <span>, </span>
+                    }
+                }
+            </p>
+        }
+        else
+        {
+            <p class="category-hint">@Resources.Resource.YouDontHaveCategories</p>
+        }
+        <p class="icon-info"><i class="fa fa-envelope"></i> @Model.Email</p>
+        <p class="icon-info"><i class="fa fa-mobile"></i>@Model.MobilePhone</p>
+    </div>
+</div>
+
+@if (Model.Information != null)
+{
+    <div class="item-description">
+        <p style="padding-bottom:15px;">@Model.Information</p>
+    </div>
+}
+
+@if (Model.Indents.Count() > 0)
+{
+    <div class="responds">
+        <p class="responds-title">@Resources.Resource.Recalls</p>
+        @foreach (var indent in Model.Indents)
+        {
+            if (indent.Recall != null)
+            {
+                var recall = indent.Recall;
+
+                if (recall.CustomerCommentForExecutor != null)
+                {
+                    <div class="respond-item">
+                        <a href="@Url.Action("ShowCustomer", "Customer", new { id = indent.Customer.CustomerId })">
+                            @if (indent.Customer.ImgSrc != null)
+                            {
+                                <img src="@Url.Content("~/Content/Customer/"+ Path.GetFileName(indent.Customer.ImgSrc))">
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/Content/Images/customer.jpeg")">
+                            }
+                        </a>
+                        <div class="respond-item-info">
+                            <p class="item-title">
+                                @Html.ActionLink(indent.Customer.FirstName, "ShowCustomer", "Customer",
+                           new { id = indent.Customer.CustomerId }, new { @style = "color:#d94d3a;" })
+                                @Resources.Resource.OnOrder
+                                @Html.ActionLink(indent.Title, "ShowIndent", "Indent",
+                           new { id = indent.IndentId }, new { @style = "color:#d94d3a;" })
+                            </p>
+                            @if (recall.CustomerCommentForExecutor != null)
+                            {
+                                <p class="respond-item-description">@recall.CustomerCommentForExecutor</p>
+                            }
+                            <div class="respond-item-marks">
+                                <span>@Resources.Resource.Mark</span>
+                                @if (recall.CustomerMarkForExecutor != null && recall.CustomerMarkForExecutor != 0)
+                                {
+                                    for (int i = 0; i < recall.CustomerMarkForExecutor; i++)
+                                    {
+                                        <img src="@Url.Content("~/Content/Images/FilledStar.jpeg")">
+                                    }
+                                }
+                                else
+                                {
+                                    for (int i = 0; i < 5; i++)
+                                    {
+                                        <img src="@Url.Content("~/Content/Images/EmptyStar.jpeg")">
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+    </div>
+}

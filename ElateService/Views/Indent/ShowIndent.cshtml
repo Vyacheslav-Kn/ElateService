@@ -1,0 +1,311 @@
+﻿@model ElateService.Models.IndentFullViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="indent-container">
+    <div class="box-shadow-back">
+        @if (ViewBag.ErrorMessage != null)
+        {
+            string errorMessage = ViewBag.ErrorMessage;
+            <p class="error">
+                @switch (errorMessage)
+                {
+                case "Были введены  некорректные данные, попробуйте снова!": @Resources.Resource.StandardErrorMessage break;
+
+                case "Категории должны различаться!": @Resources.Resource.CategoriesErrorMessage break;
+
+                case "Загружать фотографии разрешается только в jpeg формате!": @Resources.Resource.DownloadPhotoErrorMessage break;
+
+                case "Заказ не найден!": @Resources.Resource.NoIndentErrorMessage break;
+
+                case "Вы не оценили работу исполнителя!": @Resources.Resource.DontAppreciateExecutorsWorkErrorMessage break;
+
+                case "Вы не оценили действия заказчика!": @Resources.Resource.DontAppreciateCustomersWorkErrorMessage break;
+
+                default: @Resources.Resource.StandardErrorMessage break;
+                }
+            </p>
+        }
+
+        <div class="order-item">
+            <a href="@Url.Action("ShowCustomer", "Customer", new { id = Model.indentViewModel.Customer.CustomerId })">
+
+                @if (Model.indentViewModel.Customer.ImgSrc != null)
+                {
+                    <img src="@Url.Content("~/Content/Customer/"+ Path.GetFileName(Model.indentViewModel.Customer.ImgSrc))">
+                }
+                else
+                {
+                    <img src="@Url.Content("~/Content/Images/customer.jpeg")">
+                }
+
+            </a>
+            <div class="respond-item-info">
+                <span class="otklik-item-title">
+                    <a href="@Url.Action("ShowCustomer", "Customer", new
+                        { id = Model.indentViewModel.Customer.CustomerId })">@Model.indentViewModel.Customer.FirstName</a>
+                    </span>
+                    <div class="otklik-item-marks">
+
+                        @if (Model.indentViewModel.Customer.Mark != null && Model.indentViewModel.Customer.Mark != 0)
+                        {
+                         for (int i = 0; i < Model.indentViewModel.Customer.Mark; i++)
+                          {
+                                <img src="@Url.Content("~/Content/Images/FilledStar.jpeg")">
+                          }
+                        }
+                        else
+                        {
+                            for (int i = 0; i < 5; i++)
+                            {
+                                <img src="@Url.Content("~/Content/Images/EmptyStar.jpeg")">
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+
+        @if (Model.indentViewModel.Price != null && Model.indentViewModel.Price != 0)
+        {
+            <p class="private-office-indent-item-price"> @Model.indentViewModel.Price </p>
+        }
+        else
+        {
+            <p class="private-office-indent-item-price"> @Resources.Resource.ContractPrice </p>
+        }
+
+            <p class="order-title">@Model.indentViewModel.Title</p>
+
+            <p class="order-icon-info">
+                <i class="fa fa-suitcase"></i>
+                @switch (Model.indentViewModel.Category)
+                {
+                    case ElateService.Common.Category.ConstructionWorks: @Resources.Resource.ConstructionWorks break;
+
+                    case ElateService.Common.Category.TransportationServices: @Resources.Resource.TransportationServices break;
+
+                    case ElateService.Common.Category.ComputerHelp: @Resources.Resource.ComputerHelp break;
+
+                    case ElateService.Common.Category.HouseWorks: @Resources.Resource.HouseWorks break;
+
+                    case ElateService.Common.Category.Sport: @Resources.Resource.Sport break;
+
+                    case ElateService.Common.Category.Education: @Resources.Resource.Education break;
+
+                    case ElateService.Common.Category.Tourism: @Resources.Resource.Tourism break;
+                }
+            </p>
+            <p class="order-icon-info"><i class="fa fa-map-marker"></i> &nbsp; @Model.indentViewModel.City </p>
+            <p class="order-icon-info"><i class="fa fa-calendar"></i> @Resources.Resource.Until @Model.indentViewModel.IndentDate.ToString("dd/MM/yyyy") </p>
+
+            <div class="order-description">
+                <p>
+                    @Model.indentViewModel.IndentDescription
+                </p>
+            </div>
+
+            @if (Model.indentViewModel.ImgSrc != null)
+            {
+                <div class="order-images">
+                    <a href="@Url.Content("~/Content/Indent/"+ Path.GetFileName(Model.indentViewModel.ImgSrc))" target="_blank">
+                        <img src="@Url.Content("~/Content/Indent/"+ Path.GetFileName(Model.indentViewModel.ImgSrc))" class="order-images-first-img">
+                    </a>
+                </div>
+            }            
+
+            @if (Model.clientOpportunities.customerIsAllowToWriteRecall)
+            {
+                <div class="form-review">
+
+                    @using (Html.BeginForm("SaveCustomerRecallForExecutor", "UserActivity", FormMethod.Post))
+                    {
+                        <div>
+                            <span>@Resources.Resource.YourEvaluationToThePerformer</span>
+                            <img src="@Url.Content("~/Content/Images/EmptyStar.jpeg")" class="form-review-img" id="1">
+                            <img src="@Url.Content("~/Content/Images/EmptyStar.jpeg")" class="form-review-img" id="2">
+                            <img src="@Url.Content("~/Content/Images/EmptyStar.jpeg")" class="form-review-img" id="3">
+                            <img src="@Url.Content("~/Content/Images/EmptyStar.jpeg")" class="form-review-img" id="4">
+                            <img src="@Url.Content("~/Content/Images/EmptyStar.jpeg")" class="form-review-img" id="5">
+                        </div>
+                        <textarea name="Comment" placeholder="@Resources.Resource.LeaveFeedbackOnTheExecutorsWork" required></textarea>
+                        <input type="text" name="Mark" id="mark" style="display: none">
+                        <input type="text" name="IndentId" value="@Model.indentViewModel.IndentId" style="display: none">
+                        <input type="text" name="IndentTitle" value="@Model.indentViewModel.Title" style="display: none">
+                        <input type="text" name="UserOpponentId" value="@Model.indentViewModel.Executor.ExecutorId" style="display: none">
+                        <button type="submit" value="0">@Resources.Resource.PostARecall</button>
+                    }
+
+                </div>
+            }
+
+
+            @if (Model.clientOpportunities.executorIsAllowToWriteRecall)
+            {
+                <div class="form-review">
+
+                    @using (Html.BeginForm("SaveExecutorRecallForCustomer", "UserActivity", FormMethod.Post))
+                    {
+                        <div>
+                            <span>@Resources.Resource.YourEvaluationToTheCustomer</span>
+                            <img src="@Url.Content("~/Content/Images/EmptyStar.jpeg")" class="form-review-img" id="1">
+                            <img src="@Url.Content("~/Content/Images/EmptyStar.jpeg")" class="form-review-img" id="2">
+                            <img src="@Url.Content("~/Content/Images/EmptyStar.jpeg")" class="form-review-img" id="3">
+                            <img src="@Url.Content("~/Content/Images/EmptyStar.jpeg")" class="form-review-img" id="4">
+                            <img src="@Url.Content("~/Content/Images/EmptyStar.jpeg")" class="form-review-img" id="5">
+                        </div>
+                        <textarea name="Comment" placeholder="@Resources.Resource.LeaveFeedbackOnTheCustomersWork" required></textarea>
+                        <input type="text" name="Mark" id="mark" style="display: none">
+                        <input type="text" name="IndentId" value="@Model.indentViewModel.IndentId" style="display: none">
+                        <input type="text" name="IndentTitle" value="@Model.indentViewModel.Title" style="display: none">
+                        <input type="text" name="UserOpponentId" value="@Model.indentViewModel.Customer.CustomerId" style="display: none">
+                        <button type="submit" value="0">@Resources.Resource.PostARecall</button>
+                    }
+
+                </div>
+            }
+
+
+            @if (Model.clientOpportunities.executorIsAllowToSendResponce)
+            {
+                <div class="form-review">
+
+                    @using (Html.BeginForm("SaveExecutorResponce", "UserActivity", FormMethod.Post))
+                    {
+                        <span>@Resources.Resource.PriceForWork</span>
+                        <input type="text" name="indentPrice" class="input-price" id="input-price">
+                        <span style="margin-left:15px; margin-right:10px"> @Resources.Resource.Or </span>
+                        <input type="checkbox" id="input-price-checkbox" onclick="SetOrderPrice()">
+                        <span style="color:#d94d3a"> @Resources.Resource.ContractPrice </span>
+                        <textarea name="Comment" placeholder="@Resources.Resource.LeaveAResponceToThisOrder" required></textarea>
+                        <input type="text" name="IndentId" value="@Model.indentViewModel.IndentId" style="display: none">
+                        <input type="text" name="IndentTitle" value="@Model.indentViewModel.Title" style="display: none">
+                        <input type="text" name="UserOpponentId" value="@Model.indentViewModel.Customer.CustomerId" style="display: none">
+                        <button type="submit">@Resources.Resource.SendResponce</button>
+                    }
+
+                </div>
+            }
+
+
+            <div class="responds">
+                <p class="responds-title">@Resources.Resource.Responces</p>
+
+                @foreach (var responce in Model.indentViewModel.Responces)
+                {
+                    <div class="respond-item">
+                        <a href="@Url.Action("ShowExecutor", "Executor", new { id = responce.Executor.ExecutorId })">
+
+                            @if (responce.Executor.ImgSrc != null)
+                            {
+                                <img src="@Url.Content("~/Content/Executor/" + Path.GetFileName(responce.Executor.ImgSrc))">
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/Content/Images/executor.jpeg")">
+                            }
+
+                        </a>
+                        <div class="respond-item-info">
+                            <span class="otklik-item-title">
+                                <a href="@Url.Action("ShowExecutor", "Executor", new
+                                                 { id = responce.Executor.ExecutorId })">@responce.Executor.FirstName</a>                                    
+                            </span>
+                                            <div class="otklik-item-marks">
+                                                @if (responce.Executor.Mark != null && responce.Executor.Mark != 0)
+                                                {
+                                                    for (int i = 0; i < responce.Executor.Mark; i++)
+                                                    {
+                                                        <img src="@Url.Content("~/Content/Images/FilledStar.jpeg")">
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    for (int i = 0; i < 5; i++)
+                                                    {
+                                                        <img src="@Url.Content("~/Content/Images/EmptyStar.jpeg")">
+                                                    }
+                                                }                                                
+                                            </div>
+                            @if (Model.indentViewModel.Executor != null)
+                            {
+                                if (Model.indentViewModel.Executor.ExecutorId == responce.Executor.ExecutorId)
+                                {
+                                    <span class="show-indent-executor-selected"><i class="fa fa-check-square"></i></span>
+                                }
+                            }
+                                            <p class="respond-item-description">@responce.ResponceText</p>
+
+                                            @if (responce.Price != null)
+                                            {
+                                                <p class="price">@responce.Price</p>
+                                            }
+                                            else
+                                            {
+                                                <p class="price">@Resources.Resource.ContractPrice</p>
+                                            }
+
+                                            @if (Model.clientOpportunities.customerIsAllowToSelectExecutor)
+                                            {
+                                                using (Html.BeginForm("CustomerSetExecutorForIndent", "UserActivity", FormMethod.Post, new { @class = "select-executor" }))
+                                                {
+                                                    <input type="text" name="IndentId" value="@Model.indentViewModel.IndentId" style="display: none">
+                                                    <input type="text" name="IndentTitle" value="@Model.indentViewModel.Title" style="display: none">
+                                                    <input type="text" name="UserOpponentId" value="@responce.Executor.ExecutorId" style="display: none">
+                                                    <button type="submit" value="0"><i class="fa fa-check-circle"></i>@Resources.Resource.ChooseAsExecutor</button>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                 }
+                         </div>
+                 </div>
+        </div>
+
+<script>
+    $(function() {
+        $(".form-review-img").mouseover(function() {
+            giveRating($(this), "FilledStar.jpeg");
+            $(this).css("cursor", "pointer");
+        });
+
+        $(".form-review-img").mouseout(function() {
+            giveRating($(this), "EmptyStar.jpeg");
+        });
+
+        $(".form-review-img").click(function() {
+            var mark = $(this).attr("id");
+            $('#mark').attr("value", mark);
+            $(".form-review-img").unbind("mouseout mouseover click");
+
+        });
+    });
+
+    function giveRating(img, image) {
+        img.attr("src", "@Url.Content("~/Content/Images/")" + image)
+           .prevAll("img").attr("src", "@Url.Content("~/Content/Images/")" + image);
+    }
+
+    function SetOrderPrice(){
+        var isInputPriceDisabled = $("#input-price").prop("disabled");
+
+        if(isInputPriceDisabled){
+            $('#input-price').attr("disabled", false);
+        }
+        else{
+            $('#input-price').val(" ");
+            $('#input-price').attr("disabled", true);
+        }
+    }
+
+    $("#input-price").keypress(function (event) {
+        var pattern = /[0-9\,]+/i;
+        var key = event.key;
+        var isMatch = pattern.test(event.key);
+        if (event.key.length == 1 && !pattern.test(event.key)) {
+            event.preventDefault();
+            return false;
+        }
+    });
+</script>

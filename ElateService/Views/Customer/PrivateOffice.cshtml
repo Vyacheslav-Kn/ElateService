@@ -1,0 +1,107 @@
+﻿@model ElateService.Models.UserProfileViewModel
+
+@{
+    Layout = "~/Views/Shared/_PrivateOfficeCustomerLayout.cshtml";
+}
+
+<p class="menu-section-title">@Resources.Resource.Profile</p>
+
+<div class="item">
+    @if (Model.ImgSrc != null)
+    {
+        <img src="@Url.Content("~/Content/Customer/"+ Path.GetFileName(Model.ImgSrc))">
+    }
+    else
+    {
+        <img src="@Url.Content("~/Content/Images/customer.jpeg")">
+    }
+
+    <div class="item-info">
+        <p class="item-title">@Model.Surname @Model.FirstName @Model.Patronymic</p>
+        <div class="item-marks">
+            @if (Model.Mark != null && Model.Mark != 0)
+            {
+                for (int i = 0; i < Model.Mark; i++)
+                {
+                    <img src="@Url.Content("~/Content/Images/FilledStar.jpeg")">
+                }
+            }
+            else
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    <img src="@Url.Content("~/Content/Images/EmptyStar.jpeg")">
+                }
+            }
+        </div>
+        <p class="icon-info"><i class="fa fa-envelope"></i>@Model.Email</p>
+        <p class="icon-info"><i class="fa fa-mobile"></i>@Model.MobilePhone</p>
+    </div>
+</div>
+
+@if (Model.Information != null)
+{
+    <div class="item-description">
+        <p style="padding-bottom:15px;">@Model.Information</p>
+    </div>
+}
+
+@if (Model.Indents.Count() > 0)
+{
+    <div class="responds">
+        <p class="responds-title">@Resources.Resource.Recalls</p>
+        @foreach (var indent in Model.Indents)
+        {
+            if (indent.Recall != null && indent.Executor != null)
+            {
+                var recall = indent.Recall;
+
+                if (recall.ExecutorCommentForCustomer != null)
+                {
+                    <div class="respond-item">
+                        <a href="@Url.Action("ShowExecutor", "Executor", new { id = indent.Executor.ExecutorId })">
+                            @if (indent.Executor.ImgSrc != null)
+                            {
+                                <img src="@Url.Content("~/Content/Executor/"+ Path.GetFileName(indent.Executor.ImgSrc))">
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/Content/Images/executor.jpeg")">
+                            }
+                        </a>
+                        <div class="respond-item-info">
+                            <p class="item-title">
+                                @Html.ActionLink(indent.Executor.FirstName, "ShowExecutor", "Executor",
+                           new { id = indent.Executor.ExecutorId }, new { @style = "color:#d94d3a;" })
+                                @Resources.Resource.OnOrder
+                                @Html.ActionLink(indent.Title, "ShowIndent", "Indent",
+                           new { id = indent.IndentId }, new { @style = "color:#d94d3a;" })
+                            </p>
+                            @if (recall.ExecutorCommentForCustomer != null)
+                            {
+                                <p class="respond-item-description">@recall.ExecutorCommentForCustomer</p>
+                            }
+                            <div class="respond-item-marks">
+                                <span>@Resources.Resource.Mark</span>
+                                @if (recall.ExecutorMarkForCustomer != null && recall.ExecutorMarkForCustomer != 0)
+                            {
+                                for (int i = 0; i < recall.ExecutorMarkForCustomer; i++)
+                                {
+                                        <img src="@Url.Content("~/Content/Images/FilledStar.jpeg")">
+                                    }
+                                }
+                                else
+                                {
+                                    for (int i = 0; i < 5; i++)
+                                    {
+                                        <img src="@Url.Content("~/Content/Images/EmptyStar.jpeg")">
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+    </div>
+}

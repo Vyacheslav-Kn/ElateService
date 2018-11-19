@@ -1,0 +1,62 @@
+﻿@model ElateService.Models.CustomerPropertiesForEditionViewModel
+
+@{
+    Layout = "~/Views/Shared/_PrivateOfficeCustomerLayout.cshtml";
+}
+
+
+<p class="menu-section-title">@Resources.Resource.EditProfile</p>
+
+@if (ViewBag.ErrorMessage != null)
+{
+    string errorMessage = ViewBag.ErrorMessage;
+
+    <p class="error">
+        @switch (errorMessage)
+        {
+        case "Были введены  некорректные данные, попробуйте снова!": @Resources.Resource.StandardErrorMessage break;
+
+        case "Категории должны различаться!": @Resources.Resource.CategoriesErrorMessage break;
+
+        case "Загружать фотографии разрешается только в jpeg формате!": @Resources.Resource.DownloadPhotoErrorMessage break;
+
+        case "Заказ не найден!": @Resources.Resource.NoIndentErrorMessage break;
+
+        case "Вы не оценили работу исполнителя!": @Resources.Resource.DontAppreciateExecutorsWorkErrorMessage break;
+
+        case "Вы не оценили действия заказчика!": @Resources.Resource.DontAppreciateCustomersWorkErrorMessage break;
+
+        default: @Resources.Resource.StandardErrorMessage break;
+        }
+    </p>
+}
+
+<div class="redact-fields">
+    @using (Html.BeginForm("ModificateProfile", "Customer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="redact-fields-single-field">
+            <span>@Resources.Resource.AdditionalInformation</span>
+            @if (Model.Information == null)
+            {
+                <textarea maxlength="1000" name="information"></textarea>
+            }
+            else
+            {
+                <textarea maxlength="1000" name="information">@Model.Information</textarea>
+            }
+        </div>
+                <div class="redact-fields-single-field">
+                    <span>@Resources.Resource.Photo</span>
+                    <div class="redact-fields-files">
+
+                        <label for="file-upload" class="custom-file-upload">
+                            <i class="fa fa-cloud-upload"></i> @Resources.Resource.ChooseFile
+                        </label>
+                        <input id="file-upload" name="fileup" type="file" accept=".jpeg" />
+
+                    </div>
+                </div>
+                 
+        <button type="submit">@Resources.Resource.Save</button>
+    }
+</div>

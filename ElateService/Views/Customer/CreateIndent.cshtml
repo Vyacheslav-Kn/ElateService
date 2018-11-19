@@ -1,0 +1,136 @@
+﻿@model ElateService.Models.IndentViewModel
+
+@{
+    Layout = "~/Views/Shared/_PrivateOfficeCustomerLayout.cshtml";
+}
+
+<p class="menu-section-title">@Resources.Resource.OfferOrder</p>
+
+<p class="error" id="jsValidationCreateIndent" style="display:none">@Resources.Resource.StandardErrorMessage</p>
+
+@if (ViewBag.ErrorMessage != null)
+{
+    string errorMessage = ViewBag.ErrorMessage;
+
+    <p class="error" id="error-p">
+        @switch (errorMessage)
+        {
+        case "Были введены  некорректные данные, попробуйте снова!": @Resources.Resource.StandardErrorMessage break;
+
+        case "Категории должны различаться!": @Resources.Resource.CategoriesErrorMessage break;
+
+        case "Загружать фотографии разрешается только в jpeg формате!": @Resources.Resource.DownloadPhotoErrorMessage break;
+
+        case "Заказ не найден!": @Resources.Resource.NoIndentErrorMessage break;
+
+        case "Вы не оценили работу исполнителя!": @Resources.Resource.DontAppreciateExecutorsWorkErrorMessage break;
+
+        case "Вы не оценили действия заказчика!": @Resources.Resource.DontAppreciateCustomersWorkErrorMessage break;
+
+        default: @Resources.Resource.StandardErrorMessage break;
+        }
+    </p>
+}
+
+<div class="order-fields">
+    @using (Html.BeginForm("SaveIndent", "Indent", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="order-fields-single-field">
+            <span>@Resources.Resource.OrderCategory</span>
+            @Html.DropDownList("indentCategory", new SelectList(
+           new List<string>()
+           {
+               Resources.Resource.ConstructionWorks,
+               Resources.Resource.TransportationServices,
+               Resources.Resource.ComputerHelp,
+               Resources.Resource.HouseWorks,
+               Resources.Resource.Sport,
+               Resources.Resource.Education,
+               Resources.Resource.Tourism
+           }), 
+           new { @class = "redact-fields-small-input", required = "required" })
+        </div>
+        <div class="order-fields-single-field">
+            <span>@Resources.Resource.Title</span>
+            @Html.TextBoxFor(m => m.Title, new { @class = "order-fields-long-input", required = "required" })
+        </div>
+        <div class="order-fields-single-field">
+            <span>@Resources.Resource.Description</span>
+            <textarea maxlength="1000" name="IndentDescription" required></textarea>
+        </div>
+        <div class="order-fields-single-field">
+            <span>@Resources.Resource.FilesToOrder</span>
+            <div class="order-fields-files">
+
+                <label for="file-upload-1" class="custom-file-upload">
+                    <i class="fa fa-cloud-upload"></i> @Resources.Resource.ChooseFile
+                </label>
+                <input id="file-upload-1" name="file-upload-1" type="file" accept=".jpeg" />
+
+            </div>
+        </div>
+        <div class="order-fields-single-field">
+            <span>@Resources.Resource.Address</span>
+            @Html.TextBoxFor(m => m.City, new { @class = "order-fields-long-input", required = "required", @maxlength = "200" })
+        </div>
+        <div class="order-fields-single-field">
+            <span>@Resources.Resource.Date</span>
+            <input type="date" name="IndentDate" class="order-fields-small-input" required>
+        </div>
+        <div class="order-fields-single-field">
+            <span>@Resources.Resource.Price</span>
+            <input type="text" class="order-fields-small-input" name="indentPrice" id="inputPrice">
+            <span style="margin-left:15px; margin-right:10px"> @Resources.Resource.Or </span>
+            <input type="checkbox" id="input-price-checkbox" onclick=setOrderPrice()>
+            <span style="color:#d94d3a"> @Resources.Resource.ContractPrice </span>
+        </div>
+
+        <button type="submit" id="indentSubmit">@Resources.Resource.SendOrder</button>
+    }
+</div>
+
+<script>
+    function setOrderPrice(){
+        var isInputPriceDisabled = $("#inputPrice").prop("disabled");
+
+        if(isInputPriceDisabled){
+            $('#inputPrice').attr("disabled", false);
+        }
+        else{
+            $('#inputPrice').val(" ");
+            $('#inputPrice').attr("disabled", true);
+        }
+    }
+
+    $("#indentSubmit").click(function(event) {
+        var pattern = /^[0-9]*\,?[0-9]+\s?$/i;
+        var patternForContractPrice = /^\s{1}$/i;
+
+        var jsFieldForValidationError = document.getElementById('jsValidationCreateIndent');
+        var price = document.getElementById('inputPrice');
+
+        var isContractPriceMatches = patternForContractPrice.test(price.value);
+        var isInputPriceDisabled = $("#inputPrice").prop("disabled");
+
+        if (!isContractPriceMatches || !isInputPriceDisabled) {
+            var isPriceMatches = pattern.test(price.value.trim());
+            if (!isPriceMatches) {
+            jsFieldForValidationError.style.display = "";
+            event.preventDefault();
+            return false;
+            }
+        }        
+
+        jsFieldForValidationError.style.display = "none";
+    });
+
+    $("#inputPrice").keypress(function (event) {
+        var pattern = /[0-9\,]+/i;
+        var key = event.key;
+        if (event.key.length == 1 && !pattern.test(event.key)) {
+            event.preventDefault();
+            return false;
+        }
+
+    });
+</script>
